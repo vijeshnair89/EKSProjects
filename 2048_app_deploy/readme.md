@@ -10,16 +10,21 @@ AWS CLI – A command line tool for working with AWS services, including Amazon 
 Steps to follow:
 
 Install EKS using Fargate
+
 eksctl create cluster --name demo-cluster --region us-east-1 --fargate
 
 Configure IAM OIDC provider
+
 eksctl utils associate-iam-oidc-provider --cluster $cluster_name --approve
 
 Setup ALB Controller:
+
 Download IAM policy
+
 curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json
 
 Create IAM Policy
+
 aws iam create-policy \
     --policy-name AWSLoadBalancerControllerIAMPolicy \
     --policy-document file://iam_policy.json
@@ -55,6 +60,7 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 
 
 Deploy the deployment, service and Ingress (All the deployments are together here)
+
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/examples/2048/2048_full.yaml
 
 ![image](https://github.com/vijeshnair89/EKSProjects/assets/143416086/c1090b9d-6010-40b3-b62c-0204ce5ad63a)
