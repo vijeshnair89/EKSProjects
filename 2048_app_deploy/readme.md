@@ -13,6 +13,10 @@ Install EKS using Fargate
 
 eksctl create cluster --name demo-cluster --region us-east-1 --fargate
 
+Create a fargate profile for the namespaces where we want to deploy our resources:
+
+eksctl create fargateprofile --cluster demo-cluster  --region us-east-1   --name alb-sample-app   --namespace game-2048
+
 Configure IAM OIDC provider
 
 eksctl utils associate-iam-oidc-provider --cluster $cluster_name --approve
