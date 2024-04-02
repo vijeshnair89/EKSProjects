@@ -1,4 +1,5 @@
 Prerequisites to deploy the application:
+In this application we use fargates as worker nodes.
 
 kubectl – A command line tool for working with Kubernetes clusters. For more information, see Installing or updating kubectl.
 
